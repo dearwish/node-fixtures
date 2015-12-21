@@ -14,7 +14,7 @@ function Fixtures () {
 
 	var fixtures = {},
 		fpath = _findPath();
-	
+
 	if ( !fpath ) throw new Error('fixtures path not found');
 
 	var files = fs.readdirSync(fpath);
@@ -25,7 +25,7 @@ function Fixtures () {
 			fname = (isJSON) ? _trunc(file, 5) :
 					(isJS) ? _trunc(file, 3) : null;
 		if (fname) {
-			fixtures[fname] = JSON.parse( fs.readFileSync( path.join(fpath, file), 'utf8') ); 
+			fixtures[fname] = JSON.parse( fs.readFileSync( path.join(fpath, file), 'utf8') );
 		}
 	});
 
@@ -61,7 +61,7 @@ function _clone (param) {
 		return undefined;
 	else if (param instanceof Array)
 		result = [];
-	else if (typeof param === 'object')
+	else if (typeof param === 'object' && param != null)
 		result = {};
 	else
 		return param;
@@ -110,7 +110,7 @@ function _endsWith(str, a) {
  * @api private
  */
 function _findPath () {
-	// Remove the startup filename 
+	// Remove the startup filename
 	var dirpath = path.join( module.parent.filename, '..'),
 		dirname = path.basename(dirpath),
 		fpath;

@@ -1,5 +1,6 @@
 {
   "order1": {
-    "product": "Item"
+    "product": "Item",
+    "manufacturer": null
   }
 }
